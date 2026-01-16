@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 # Konfigurasi halaman
 st.set_page_config(
@@ -10,7 +11,10 @@ st.set_page_config(
 )
 
 # Load data
-day_df = pd.read_csv("day.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "day.csv")
+
+day_df = pd.read_csv(DATA_PATH)
 day_df["dteday"] = pd.to_datetime(day_df["dteday"])
 
 # Mapping kategori
